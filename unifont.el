@@ -3,6 +3,7 @@
 ;; Copyright (C) 2019  Xu Chunyang
 
 ;; Author: Xu Chunyang <mail@xuchunyang.me>
+;; Homepage: https://github.com/xuchunyang/unifont.el
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords:
 

@@ -66,6 +66,7 @@
   (let ((lines (apply #'seq-mapn #'concat (mapcar #'unifont-render-char string))))
     (mapconcat #'identity lines "\n")))
 
+;;;###autoload
 (defun unifont-test (string)
   (interactive (list (read-string "String to render: " nil nil "你好 Emacs")))
   (with-current-buffer (get-buffer-create "*Unifont Test*")
@@ -73,6 +74,11 @@
     (switch-to-buffer (current-buffer))
     (erase-buffer)
     (insert (unifont-render-string string))))
+
+;;;###autoload
+(defun unifont-insert (string)
+  (interactive (list (read-string "Insert: ")))
+  (insert (mapconcat #'unifont-render-string (split-string string "\n") "\n.\n")))
 
 (provide 'unifont)
 ;;; unifont.el ends here

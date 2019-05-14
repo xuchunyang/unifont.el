@@ -48,6 +48,13 @@
             (mapcar (lambda (n) (string-to-number n 16))
                     (seq-partition bits width))))))
 
+(defvar unifont-block (or
+                       "█"
+                       (propertize " " 'font-lock-face '(:background "white"))
+                       (propertize " " 'face '(:background "white"))
+                       (propertize " " 'font-lock-face '(:background "pink"))
+                       "■"))
+
 (defun unifont-render-char (char)
   (pcase-let* ((`(,width . ,bits) (unifont-get-bits char))
                (masks
@@ -58,7 +65,7 @@
               (mapconcat (lambda (mask)
                            (if (zerop (logand n mask))
                                " "
-                             (propertize " " 'face '(:background "white"))))
+                             unifont-block))
                          masks ""))
             bits)))
 

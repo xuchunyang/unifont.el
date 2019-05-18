@@ -33,7 +33,9 @@
                    "unifont-12.1.01.hex"
                    (file-name-directory (or load-file-name buffer-file-name)))))
     (unless (file-exists-p filename)
-      (url-copy-file "http://unifoundry.com/pub/unifont/unifont-12.1.01/font-builds/unifont_sample-12.1.01.hex.gz" filename))
+      (url-copy-file "http://unifoundry.com/pub/unifont/unifont-12.1.01/font-builds/unifont-12.1.01.hex.gz"
+                     "unifont-12.1.01.hex.gz")
+      (shell-command "gunzip unifont-12.1.01.hex.gz"))
     filename))
 
 (defun unifont-get-bits (char)
